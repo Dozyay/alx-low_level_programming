@@ -2,7 +2,7 @@
 
 /**
  * print_sign - This function prints the sign of a number
- * 
+ *
  * @n: character
  *
  * Return: 1 if n is greater than 0
