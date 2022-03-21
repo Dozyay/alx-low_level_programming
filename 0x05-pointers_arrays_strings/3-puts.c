@@ -1,20 +1,21 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * _puts - This function prints a string
- * to the standard output
- * @str: pointer with the address value
- *
- * Return: void
+ * _puts - function prints a string, followed by a new line, to stdout.
+ * @str: is a pointer to a character array
+ * Return: Always void.
  */
+
 void _puts(char *str)
 {
+	int j = 1;
 
-	while (*str != '\0')
+	char pl = str[0];
+
+	while (pl != '\0')
 	{
-		_putchar(*str++);
+		_putchar(pl);
+		pl = str[j++];
 	}
-
 	_putchar('\n');
 }
