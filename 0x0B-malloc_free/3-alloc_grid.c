@@ -20,7 +20,7 @@ else
 	for (i = 0; i < height; i++)
 	{
 		tab[i] = malloc(sizeof(**tab) * width);
-		
+
 		if (tab[i] == 0)
 		{
 			/*Free everything if malloc fails*/
@@ -29,7 +29,7 @@ else
 			free(tab);
 			return (NULL);
 		}
-		
+
 		for (j = 0; j < width; j++)
 			tab[i][j] = 0;
 	}
