@@ -1,41 +1,42 @@
-#include "3-calc.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include "3-calc.h"
 
 /**
- * main - Prints the result of simple operations.
- * @argc: The number of arguments supplied to the program.
- * @argv: An array of pointers to the arguments.
- *
- * Return: Always 0.
+ * main - program runs with two integers and an operator
+ * then calculate the math via a function pointer.
+ * @argc: argument counter
+ * @argv: arguments
+ * Return: 0 if successful
  */
 
 int main(int argc, char *argv[])
 {
-	int num1, num2;
-	char *op;
+	int n1, n2;
+
+	int (*f)(int, int);
 
 	if (argc != 4)
 	{
 		printf("Error\n");
 		exit(98);
 	}
-	num1 = atoi(argv[1]);
-	op = argv[2];
-	num2 = atoi(argv[3]);
 
-	if (get_op_func(op) == NULL || op[1] != '\0')
+	n1 = atoi(argv[1]);
+	n2 = atoi(argv[3]);
+	f = get_op_func(argv[2]);
+
+	if (f == NULL || (argv[2][1] != '\0'))
 	{
 		printf("Error\n");
 		exit(99);
 	}
-	if ((*op == '/' && num2 == 0) ||
-			(*op == '%' && num2 == 0))
+
+	if ((argv[2][0] == '/' || argv[2][0] == '%') && argv[3][0] == '0')
 	{
 		printf("Error\n");
 		exit(100);
 	}
-	printf("%d\n", get_op_func(op)(num1, num2));
+	printf("%d\n", f(n1, n2));
 	return (0);
 }
-
